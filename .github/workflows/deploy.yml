@@ -25,32 +25,18 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20'  # 升級到 20 比較新，Vite 跑得更好（原本 18 也 ok）
 
-      - name: Verify files exist
-        run: |
-          echo "Checking for package files..."
-          ls -la package*.json
-          if [ -f package-lock.json ]; then
-            echo "✓ package-lock.json found"
-          else
-            echo "✗ package-lock.json not found"
-          fi
+      # 故意不加 cache，避免觸發 lock file 檢查 bug
 
       - name: Install dependencies
-        run: |
-          if [ -f package-lock.json ]; then
-            npm ci
-          else
-            echo "package-lock.json not found, using npm install instead"
-            npm install
-          fi
+        run: npm ci  # 用 ci 嚴格依照 lock file 安裝，超穩定
 
       - name: Build
         run: npm run build
 
       - name: Setup Pages
-        uses: actions/configure-pages@v5   # 建議升級到最新版 v5
+        uses: actions/configure-pages@v5  # 升級到 v5 最新
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
