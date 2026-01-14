@@ -25,10 +25,26 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'          # 或改成 '20' 也可以，Vite 支援很好
+          node-version: '18'
+
+      - name: Verify files exist
+        run: |
+          echo "Checking for package files..."
+          ls -la package*.json
+          if [ -f package-lock.json ]; then
+            echo "✓ package-lock.json found"
+          else
+            echo "✗ package-lock.json not found"
+          fi
 
       - name: Install dependencies
-        run: npm ci                   # ← 改成 ci 更好！
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci
+          else
+            echo "package-lock.json not found, using npm install instead"
+            npm install
+          fi
 
       - name: Build
         run: npm run build
