@@ -35,7 +35,10 @@ function ProjectModal({ project, onClose }) {
 
         {project.thumbnail && (
           <div className="modal-thumbnail">
-            <img src={project.thumbnail} alt={project.name} />
+            <img 
+              src={project.thumbnail.startsWith('http') ? project.thumbnail : `${import.meta.env.BASE_URL}${project.thumbnail.replace(/^\//, '')}`} 
+              alt={project.name} 
+            />
           </div>
         )}
 
