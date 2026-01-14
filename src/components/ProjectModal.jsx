@@ -59,6 +59,13 @@ function ProjectModal({ project, onClose }) {
                 {section.type === 'image' && (
                   <img src={section.src} alt={section.alt || ''} />
                 )}
+                {section.type === 'link' && (
+                  <div className="presentation-link">
+                    <a href={section.url} target="_blank" rel="noopener noreferrer" className="project-link">
+                      {section.text || section.url}
+                    </a>
+                  </div>
+                )}
               </div>
             ))}
           </div>
@@ -69,4 +76,6 @@ function ProjectModal({ project, onClose }) {
 }
 
 export default ProjectModal
+
+
 

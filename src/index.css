@@ -5,14 +5,16 @@
 }
 
 :root {
-  --primary-color: #6366f1;
-  --secondary-color: #8b5cf6;
-  --background: #0f172a;
-  --surface: #1e293b;
-  --text-primary: #f1f5f9;
-  --text-secondary: #cbd5e1;
-  --border-color: #334155;
-  --hover-color: #4f46e5;
+  --primary-color: #5B8DEF;
+  --secondary-color: #7B9AE8;
+  --background: #F8F9FA;
+  --surface: #FFFFFF;
+  --text-primary: #2D3748;
+  --text-secondary: #4A5568;
+  --border-color: #E2E8F0;
+  --hover-color: #4A7BC8;
+  --accent-color: #A8D5E2;
+  --shadow-color: rgba(91, 141, 239, 0.15);
 }
 
 body {
