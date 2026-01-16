@@ -155,8 +155,13 @@ export const projects = [
         ]
       },
       {
-        type: 'paragraph',
-        content: '立即體驗：訪問 life-coach-web.vercel.app 開始您的命理探索之旅！'
+        type: 'heading',
+        content: '立即體驗'
+      },
+      {
+        type: 'link',
+        url: 'https://life-coach-web.vercel.app',
+        text: '前往生命教練網 →'
       }
     ]
   },
