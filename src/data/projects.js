@@ -278,7 +278,7 @@ export const projects = [
   },
   {
     id: 3,
-    name: '好客旅行社官方網站',
+    name: '旅行社官網架設',
     shortDescription: '專業的旅遊服務平台，提供國內外精選旅遊行程，包含行程推薦、線上預訂、會員服務等功能。',
     technologies: ['Vue 3', 'TypeScript', 'Vite', 'Bootstrap 5', 'Pinia', 'GitHub Pages'],
     thumbnail: '/hakotravel.png',
