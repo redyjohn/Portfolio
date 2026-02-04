@@ -411,6 +411,90 @@ export const projects = [
         text: '前往好客旅行社官方網站 →'
       }
     ]
+  },
+  {
+    id: 4,
+    name: '平台回覆系統',
+    shortDescription: '基於 Vue 3 + TypeScript + Vite 的客服系統前端原型，規格驅動開發，完整對接 CSV API 規範，支援 Mock 與後端切換。',
+    technologies: ['Vue 3', 'TypeScript', 'Vite', 'Pinia', 'Vue Router', 'Tailwind CSS v4', 'Fetch API'],
+    thumbnail: 'https://via.placeholder.com/400x300/6366f1/FFFFFF?text=平台回覆系統',
+    presentation: [
+      {
+        type: 'heading',
+        content: '平台回覆系統（Platform Reply System）'
+      },
+      {
+        type: 'paragraph',
+        content: '本專案為基於 Vue 3 + TypeScript + Vite 建置的客服系統前端原型，採用規格驅動開發（Specification-Driven Development）：所有 API 介面、資料結構與錯誤處理均完全遵循專案根目錄下 /docs 資料夾內的 CSV API 規範開發。在無後端環境下，透過 Mock 資料完成完整功能開發；後端就緒後，僅需切換 API 來源與 WebSocket 連線即可對接，無需改動 UI 與業務邏輯層。'
+      },
+      {
+        type: 'heading',
+        content: '技術棧'
+      },
+      {
+        type: 'list',
+        items: [
+          '框架：Vue 3（Composition API、script setup）',
+          '語言：TypeScript（嚴格型別、DTO/Model 分層）',
+          '建置：Vite（開發伺服器與生產建置）',
+          '狀態：Pinia（全域狀態管理）',
+          '路由：Vue Router（/conversations、/conversations/:id）',
+          '樣式：Tailwind CSS v4（原子化 CSS、響應式版面）',
+          '圖示：lucide-vue-next',
+          '工具：date-fns（日期格式化）、@vueuse/core（組合式工具）',
+          'HTTP：原生 Fetch API，Base URL 由 config.js 提供'
+        ]
+      },
+      {
+        type: 'heading',
+        content: '核心設計模式'
+      },
+      {
+        type: 'list',
+        items: [
+          'Adapter Pattern（Mappers）：DTO 層與 CSV 規範一致（snake_case）；Model 層供 View 使用（camelCase）；mappers.ts 統一轉換，後端欄位更名時僅需修改 DTO 與 Mapper，與 UI 解耦',
+          'Mocking Strategy：mocks.ts 提供與 conversations 相同簽名的 Mock 函式（getConversations、getConversation、getConversationMessages、sendMessage、uploadFile），含分頁、篩選、排序、clientMessageId 去重、meta.hasMore/nextBefore；對接後端時改為從 conversations 取得資料並切換 WebSocket 即可'
+        ]
+      },
+      {
+        type: 'heading',
+        content: 'API 符合度與資源對接'
+      },
+      {
+        type: 'list',
+        items: [
+          'Conversation.csv：列表/詳情（id、customer、channel、status、unreadCount、lastMessage、assignee、tags）；篩選 q、status、channel、assigneeId、unread、sort、updatedAfter；分頁 page、pageSize',
+          'Message.csv：訊息列表（nextBefore、meta.hasMore）；訊息欄位 senderType、type、text、attachments、createdAt、readedAt；POST 發送 text、attachments、clientMessageId',
+          'Customer.csv：id、name、customName、avatarUrl、email、phone、loginAt、tags；詳情頁右側客戶資訊卡',
+          'Attachment.csv：fileId、fileName、mimeType、size、url；上傳後帶入 postMessage；前端驗證 10MB 與 mimeType 白名單',
+          'traceId 解析與 429 Rate Limit 處理；錯誤提示皆顯示 traceId'
+        ]
+      },
+      {
+        type: 'heading',
+        content: '環境配置與部署'
+      },
+      {
+        type: 'paragraph',
+        content: 'public/config.js 提供執行期 API Base URL 與 WebSocket 地址，部署後可不重新打包即修改。View 依賴 @/api/mocks 或 @/api/conversations；切換真實 API 時改為 conversations + getWebSocketUrl()，上傳改為 FormData POST 至後端。'
+      },
+      {
+        type: 'list',
+        items: [
+          '路由：/ → /conversations；/conversations 對話列表（篩選、分頁、WebSocket 推播未讀即時更新）；/conversations/:conversationId 對話詳情與訊息；/settings 設定頁',
+          '部署：GitHub Pages（redyjohn/fdjob），push main 後自動部署；預覽 https://redyjohn.github.io/fdjob/'
+        ]
+      },
+      {
+        type: 'heading',
+        content: '立即體驗'
+      },
+      {
+        type: 'link',
+        url: 'https://redyjohn.github.io/fdjob/',
+        text: '前往平台回覆系統 →'
+      }
+    ]
   }
 ]
 
