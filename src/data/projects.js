@@ -414,6 +414,7 @@ export const projects = [
   },
   {
     id: 4,
+    hidden: true,
     name: '平台回覆系統',
     shortDescription: '基於 Vue 3 + TypeScript + Vite 的客服系統前端原型，規格驅動開發，完整對接 CSV API 規範，支援 Mock 與後端切換。',
     technologies: ['Vue 3', 'TypeScript', 'Vite', 'Pinia', 'Vue Router', 'Tailwind CSS v4', 'Fetch API'],

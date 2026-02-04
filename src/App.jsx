@@ -24,7 +24,7 @@ function App() {
 
       <main className="main-content">
         <div className="projects-grid">
-          {projects.map((project) => (
+          {projects.filter((project) => !project.hidden).map((project) => (
             <ProjectCard
               key={project.id}
               project={project}
